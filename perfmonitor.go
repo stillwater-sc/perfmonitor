@@ -145,16 +145,16 @@ package perfmonitor
 import (
 	"fmt"
 	"github.com/golang/glog"
-	"github.com/stillwater-sc/kpu/types"
 )
 
 type ResourceTag uint64
+type ResourceAddress [3]int
 type PerfMonitor map[ResourceTag]*JobFlow
 
 /////////////////////////////////////////////////////////////////
 // Selectors
 
-func (t *ResourceTag) GenerateUniqueIdentifier(index types.LatticeVector) ResourceTag {
+func (t *ResourceTag) GenerateUniqueIdentifier(index ResourceAddress) ResourceTag {
 	*t = ResourceTag(uint64(index[0]) | uint64(index[1]) << 16 | uint64(index[2]) << 32)
 	return *t
 }
