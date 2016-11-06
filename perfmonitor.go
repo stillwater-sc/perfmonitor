@@ -60,7 +60,7 @@
  * storage, management, and queries, so we are using the same line protocol as that
  * database. This would allow us to replay the events captured in the PerfMonitor
  * and send them to an InfluxDB instance. We have an in-memory PerfMonitor in the
- * simulator because of the performance requirements. InfluxDB replays would only be
+ * simulator because of simulator performance requirements. InfluxDB replays would only be
  * required for inspection and debug. Most of the time, the low level operational
  * analysis attributes will be enough to validate results, and support regression
  * testing.
