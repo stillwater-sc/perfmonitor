@@ -154,6 +154,10 @@ type PerfMonitor map[ResourceTag]*JobFlow
 /////////////////////////////////////////////////////////////////
 // Selectors
 
+func (t *ResourceTag) String() string {
+	return fmt.Sprintf("%#10X", *t)
+}
+
 func (t *ResourceTag) GenerateUniqueIdentifier(index ResourceAddress) ResourceTag {
 	*t = ResourceTag(uint64(index[0]) | uint64(index[1]) << 16 | uint64(index[2]) << 32)
 	return *t
