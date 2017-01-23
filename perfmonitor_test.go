@@ -56,3 +56,16 @@ func TestPerfMonitor_OperationalAnalysis(t *testing.T) {
 /////////////////////////////////////////////////////////////////
 // Benchmarks
 
+/*
+BenchmarkPerfMonitor measures the performance of the PerfMonitor data collection operations.
+
+1/23/2017  ~200ns/op  -> 5MHz
+ */
+func BenchmarkPerfMonitor(b *testing.B) {
+	var resourceTag ResourceTag = ResourceTag(1234)
+	perfmon := NewPerfMonitor("Stringer")
+	for i := 0; i < b.N; i++ {
+		perfmon.Arrival(resourceTag, uint64(i))
+		perfmon.Completion(resourceTag, uint64(i+5))
+	}
+}
