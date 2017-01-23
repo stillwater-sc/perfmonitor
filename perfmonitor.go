@@ -1,5 +1,5 @@
 /*
- File		:	$File: //depot/stillwater/perfmonitor/perfmonitor.go $
+ File		:	$File: //depot/stillwater-sc/perfmonitor/perfmonitor.go $
 
  Authors	:	E. Theodore L. Omtzigt
  Date		:	5 May 2016
@@ -7,7 +7,7 @@
  Source Control Information:
  Version	:	$Revision: #1 $
  Latest		:	$Date: 2016/05/05 $
- Location	:	$Id: //depot/stillwater/perfmonitor/perfmonitor.go#1 $
+ Location	:	$Id: //depot/stillwater-sc/perfmonitor/perfmonitor.go#1 $
 
  Organization:
 		Stillwater Supercomputing, Inc.
@@ -46,6 +46,7 @@ The general structure of a Domain Flow Algorithm is:
  }
 
 The transaction tracing would tag an input data element from the input() domain, for example, A(1,1).
+
 Then trace the evolution of the recurrence; a(i,j,k) = f(a(i,j,k-1)) through the domain.
 
 The transaction traces generated would look like this:
@@ -65,7 +66,6 @@ required for inspection and debug. Most of the time, the low level operational
 analysis attributes will be enough to validate results, and support regression testing.
 
 The InfluxDB line protocol is structured as follows:
-
 {
     "database": "foo",
     "retentionPolicy": "bar",
