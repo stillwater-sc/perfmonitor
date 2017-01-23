@@ -32,17 +32,19 @@ import (
 
 func TestOperationalQuantities_String(t *testing.T) {
 	var i uint64
-	var perfmon PerfMonitor = make(map[ResourceTag]*JobFlow)
+	var resourceTag ResourceTag = ResourceTag(1234)
+	var perfmon PerfMonitor
+	perfmon.Observations = make(map[ResourceTag]*JobFlow)
 	for i = 0; i < 11; i++ {
-		perfmon.Arrival(0, i)
+		perfmon.Arrival(resourceTag, i)
 	}
 	for i = 0; i < 10; i++ {
-		perfmon.Completion(0, i+5)
+		perfmon.Completion(resourceTag, i+5)
 	}
-	var jf *JobFlow = perfmon[0]
-	a := fmt.Sprintf("%s",jf.String())
+	var jf *JobFlow = perfmon.Observations[resourceTag]
+	a := fmt.Sprintf("%s", jf.String())
 	if strings.Compare(a, "[11,0,10]") != 0 {
-		t.Errorf("String conversion is incorrect")
+		t.Errorf("String conversion is incorrect: %s != [11,0,10]", a)
 	}
 }
 
